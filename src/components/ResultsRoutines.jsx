@@ -1,4 +1,6 @@
 "use client";
+import { BASE_API_URL } from "@/utils/constants";
+
 import ResultCard from '@/components/ResultCard';
 
 import { useSession } from "next-auth/react";
@@ -19,7 +21,7 @@ async function loadResults(session) {
       throw new Error("User or user ID is undefined");
     }
 
-    const res = await fetch(`http://localhost:3000/api/routine/${user.id}`);
+    const res = await fetch(`${BASE_API_URL}/api/routine/${user.id}`);
     if (!res.ok) {
       throw new Error("Failed to fetch results");
     }
